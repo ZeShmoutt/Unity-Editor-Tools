@@ -44,7 +44,7 @@ namespace ZeShmouttsAssets.ScriptingTools.Editor
 				UnityEditor.Handles.DrawWireDisc(position, direction, Mathf.Sin(Mathf.Deg2Rad * angle * 0.5f) * length * 0.5f);
 
 				position = new Vector3(0f, length * Mathf.Sin(Mathf.Deg2Rad * angle * 0.5f), length * Mathf.Cos(Mathf.Deg2Rad * angle * 0.5f));
-				UnityEditor.Handles.DrawWireArc(origin, -(rotation * Vector3.right), rotation * position, angle, length);
+				UnityEditor.Handles.DrawWireArc(origin, (rotation * Vector3.right), rotation * position, angle, length);
 				UnityEditor.Handles.DrawLine(origin, origin + (rotation * position));
 				UnityEditor.Handles.DrawLine(origin, origin + (rotation * new Vector3(position.x, -position.y, position.z)));
 

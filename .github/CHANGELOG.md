@@ -3,6 +3,11 @@ All notable changes to this package will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/), and this project *somewhat* adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.2.1] - 2020-05-31
+### Bug fix
+ - Class : **ScriptingToolsEditor.Handles**
+   - Fixed a small math error for `DrawWireCone` 
+
 ## [0.2.0] - 2020-05-31
 ### Added
  - Added the following classes and methods :
