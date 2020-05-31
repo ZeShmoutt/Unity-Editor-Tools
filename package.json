@@ -1,0 +1,10 @@
+{
+	"name": "com.zeshmouttsassets.unityscriptingtools",
+	"displayName":"Unity Scripting Tools",
+	"version": "0.1.0",
+	"unity": "2018.4",
+	"unityRelease": "15f1",
+	"description": "A collection of utilities to ease work within Unity.",
+	"keywords": ["unity", "scripting", "tool", "tools", "C#"],
+	"dependencies": { }
+}
