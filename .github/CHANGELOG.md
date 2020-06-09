@@ -3,6 +3,19 @@ All notable changes to this package will be documented in this file.
 
 The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/), and this project *somewhat* adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2020-05-31
+### Added
+ - Added the following classes and methods :
+   - Class : **ScriptingTools.Lists**
+     - `AddUnique<T>(List<T>, T, Predicate<T>)`
+     - `AddUniqueRange<T>(List<T>, List<T>, Predicate<T>)`
+   - Class : **ScriptingTools.Strings**
+     - `SubstringByIndexes(string, int, int)`
+
+### Bug fix
+ - Class : **ScriptingToolsEditor.Lists**
+   - Fixed some incorrect summaries 
+
 ## [0.2.1] - 2020-05-31
 ### Bug fix
  - Class : **ScriptingToolsEditor.Handles**

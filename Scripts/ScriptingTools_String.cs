@@ -19,7 +19,7 @@
 			/// <param name="start">The zero-based starting character position of a substring in this instance.</param>
 			/// <param name="end">The zero-based ending character position of a substring in this instance.</param>
 			/// <returns>Returns a substring.</returns>
-			public static string SubstringByIndexes(this string source, int startIndex, int endIndex)
+			public static string SubstringByIndexes(string source, int startIndex, int endIndex)
 			{
 				return source.Substring(startIndex, endIndex - startIndex);
 			}
