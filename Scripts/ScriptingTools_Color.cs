@@ -12,6 +12,112 @@ namespace ZeShmouttsAssets.ScriptingTools
 		/// </summary>
 		public static class Color
 		{
+			#region Rich Text
+
+			/// <summary>
+			/// Colors a string with an hexadecimal color string.
+			/// </summary>
+			/// <param name="original">The string to color.</param>
+			/// <param name="color">The hexadecimal value of the color to use.</param>
+			/// <returns>Returns a rich text string of the original string with color tags.</returns>
+			public static string RichTextColor(string original, string color)
+			{
+				return string.Format("<color=#{0}>{1}</color>", color, original);
+			}
+
+			/// <summary>
+			/// Colors a string with a Color.
+			/// </summary>
+			/// <param name="original">The string to color.</param>
+			/// <param name="color">The color to use.</param>
+			/// <returns>Returns a rich text string of the original string with color tags.</returns>
+			public static string RichTextColor(string original, UnityEngine.Color color)
+			{
+				return RichTextColor(original, ColorToHex(color));
+			}
+
+			/// <summary>
+			/// Colors a single character with an hexadecimal color string.
+			/// </summary>
+			/// <param name="original">The character to color.</param>
+			/// <param name="color">The color to use.</param>
+			/// <returns>Returns a rich text string of the original character with color tags.</returns>
+			public static string RichTextColor(char original, string color)
+			{
+				return RichTextColor(original.ToString(), color);
+			}
+
+			/// <summary>
+			/// Colors a single character with a Color.
+			/// </summary>
+			/// <param name="original">The character to color.</param>
+			/// <param name="color">The color to use.</param>
+			/// <returns>Returns a rich text string of the original character with color tags.</returns>
+			public static string RichTextColor(char original, UnityEngine.Color color)
+			{
+				return RichTextColor(original.ToString(), ColorToHex(color));
+			}
+
+			#endregion
+
+			#region Hexadecimal Conversion
+
+			/// <summary>
+			/// Converts a Color to an hexadecimal color string.
+			/// </summary>
+			/// <param name="color">The color to convert.</param>
+			/// <returns>Returns the hexadecimal value of the color as a string.</returns>
+			public static string ColorToHex(UnityEngine.Color color)
+			{
+				return ColorUtility.ToHtmlStringRGBA(color);
+			}
+
+			/// <summary>
+			/// Converts an hexadecimal string into a Color.
+			/// </summary>
+			/// <param name="hex">String to convert.</param>
+			/// <returns>Returns a Color.</returns>
+			public static UnityEngine.Color HexToColor(string hex)
+			{
+				UnityEngine.Color col;
+				if (ColorUtility.TryParseHtmlString(hex, out col))
+				{
+					return col;
+				}
+				else
+				{
+					throw new System.ArgumentException(string.Format("\"{0}\" is not a valid hexadecimal color.", hex));
+				}
+			}
+
+			#endregion
+
+			#region Alpha
+
+			/// <summary>
+			/// Changes the alpha of an existing color. Ideal when you're lazy.
+			/// </summary>
+			/// <param name="color">Color to modify.</param>
+			/// <param name="alpha">New alpha value, ranging from 0.0f to 1.0f.</param>
+			/// <returns>Returns a new color with the selected values.</returns>
+			public static UnityEngine.Color ColorAndAlpha(UnityEngine.Color color, float alpha)
+			{
+				return new UnityEngine.Color(color.r, color.g, color.b, alpha);
+			}
+
+			/// <summary>
+			/// Changes the alpha of an existing color. Ideal when you're lazy.
+			/// </summary>
+			/// <param name="color">Color to modify.</param>
+			/// <param name="alpha">New alpha value, ranging from 0 to 255.</param>
+			/// <returns>Returns a new color with the selected values.</returns>
+			public static UnityEngine.Color ColorAndAlpha(UnityEngine.Color color, int alpha)
+			{
+				return ColorAndAlpha(color, alpha / 255f);
+			}
+
+			#endregion
+
 			#region More Colors
 
 			/// <summary>
@@ -128,101 +234,6 @@ namespace ZeShmouttsAssets.ScriptingTools
 			/// Same as grey. RGBA is (0.50f, 0.50f, 0.50f, 1.00f).
 			/// </summary>
 			public static UnityEngine.Color Gray { get { return Grey; } }
-
-			#endregion
-
-			#region Rich Text
-
-			/// <summary>
-			/// Colors a string with an hexadecimal color string.
-			/// </summary>
-			/// <param name="original">The string to color.</param>
-			/// <param name="color">The hexadecimal value of the color to use.</param>
-			/// <returns>Returns a rich text string of the original string with color tags.</returns>
-			public static string RichTextColor(string original, string color)
-			{
-				return string.Format("<color=#{0}>{1}</color>", color, original);
-			}
-
-			/// <summary>
-			/// Colors a string with a Color.
-			/// </summary>
-			/// <param name="original">The string to color.</param>
-			/// <param name="color">The color to use.</param>
-			/// <returns>Returns a rich text string of the original string with color tags.</returns>
-			public static string RichTextColor(string original, UnityEngine.Color color)
-			{
-				return RichTextColor(original, ColorToHex(color));
-			}
-
-			/// <summary>
-			/// Colors a single character with an hexadecimal color string.
-			/// </summary>
-			/// <param name="original">The character to color.</param>
-			/// <param name="color">The color to use.</param>
-			/// <returns>Returns a rich text string of the original character with color tags.</returns>
-			public static string RichTextColor(char original, string color)
-			{
-				return RichTextColor(original.ToString(), color);
-			}
-
-			/// <summary>
-			/// Colors a single character with a Color.
-			/// </summary>
-			/// <param name="original">The character to color.</param>
-			/// <param name="color">The color to use.</param>
-			/// <returns>Returns a rich text string of the original character with color tags.</returns>
-			public static string RichTextColor(char original, UnityEngine.Color color)
-			{
-				return RichTextColor(original.ToString(), ColorToHex(color));
-			}
-
-			#endregion
-
-			#region Hexadecimal Conversion
-
-			/// <summary>
-			/// Converts a Color to an hexadecimal color string.
-			/// </summary>
-			/// <param name="color">The color to convert.</param>
-			/// <returns>Returns the hexadecimal value of the color as a string.</returns>
-			public static string ColorToHex(UnityEngine.Color color)
-			{
-				return ColorUtility.ToHtmlStringRGBA(color);
-			}
-
-			/// <summary>
-			/// Converts an hexadecimal string into a Color.
-			/// </summary>
-			/// <param name="hex">String to convert.</param>
-			/// <returns>Returns a Color.</returns>
-			public static UnityEngine.Color HexToColor(string hex)
-			{
-				UnityEngine.Color col;
-				if (ColorUtility.TryParseHtmlString(hex, out col))
-				{
-					return col;
-				}
-				else
-				{
-					throw new System.ArgumentException(string.Format("\"{0}\" is not a valid hexadecimal color.", hex));
-				}
-			}
-
-			#endregion
-
-			#region Alpha
-
-			/// <summary>
-			/// Changes the alpha of an existing color. Ideal when you're lazy.
-			/// </summary>
-			/// <param name="color">Color to modify.</param>
-			/// <param name="alpha">New alpha value, ranging from 0.0f to 1.0f.</param>
-			/// <returns>Returns a new color with the selected values.</returns>
-			public static UnityEngine.Color ColorAndAlpha(UnityEngine.Color color, float alpha)
-			{
-				return new UnityEngine.Color(color.r, color.g, color.b, alpha);
-			}
 
 			#endregion
 		}
