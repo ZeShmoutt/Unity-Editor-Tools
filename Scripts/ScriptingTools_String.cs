@@ -1,4 +1,6 @@
-﻿namespace ZeShmouttsAssets.ScriptingTools
+﻿using System.Collections.Generic;
+
+namespace ZeShmouttsAssets.ScriptingTools
 {
 	/// <summary>
 	/// Library of useful methods for scripts.
