@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using UnityEngine;
 
 namespace ZeShmouttsAssets.ScriptingTools
 {
@@ -28,7 +28,7 @@ namespace ZeShmouttsAssets.ScriptingTools
 				{
 					if (list.Length > 1)
 					{
-						int n = Random.Range(1, list.Length);
+						int n = UnityEngine.Random.Range(1, list.Length);
 						T picked = list[n];
 						list[n] = list[0];
 						list[0] = picked;
@@ -41,7 +41,7 @@ namespace ZeShmouttsAssets.ScriptingTools
 				}
 				else
 				{
-					throw new System.IndexOutOfRangeException();
+					throw new IndexOutOfRangeException();
 				}
 			}
 
@@ -60,7 +60,7 @@ namespace ZeShmouttsAssets.ScriptingTools
 			{
 				if (values.Length <= 0 || weights.Length != values.Length)
 				{
-					throw new System.IndexOutOfRangeException("The object list and weight list lengths don't match.");
+					throw new IndexOutOfRangeException("The object list and weight list lengths don't match.");
 				}
 
 				int total = 0;
@@ -69,7 +69,7 @@ namespace ZeShmouttsAssets.ScriptingTools
 					total += weights[i];
 				}
 
-				int rand = Random.Range(0, total);
+				int rand = UnityEngine.Random.Range(0, total);
 				int counter = 0;
 
 				for (int i = 0; i < values.Length; i++)
@@ -85,7 +85,7 @@ namespace ZeShmouttsAssets.ScriptingTools
 					}
 				}
 
-				throw new System.Exception("Something went wrong with the weighted random.");
+				throw new Exception("Something went wrong with the weighted random.");
 			}
 
 			/// <summary>
@@ -109,6 +109,40 @@ namespace ZeShmouttsAssets.ScriptingTools
 			public static T WeightedRandom<T>(Dictionary<T, int> values)
 			{
 				return WeightedRandom(values.Keys.ToArray(), values.Values.ToArray());
+			}
+
+			#endregion
+
+			#region Add Unique
+
+			/// <summary>
+			/// Add an item to a list, but only if the list doesn't already contain an item that fits the specified comparison.
+			/// </summary>
+			/// <typeparam name="T">Type of item of the list.</typeparam>
+			/// <param name="list">List to add the item to.</param>
+			/// <param name="item">Item that will be added to the list.</param>
+			/// <param name="comparator">Action used to compare two items.</param>
+			public static void AddUnique<T>(List<T> list, T item, Predicate<T> comparator)
+			{
+				if (!list.Exists(comparator))
+				{
+					list.Add(item);
+				}
+			}
+
+			/// <summary>
+			/// Add numerous items to a list, but  for each of those items, only if the list don't already contain an item that fits the specified comparison.
+			/// </summary>
+			/// <typeparam name="T">Type of item of the list.</typeparam>
+			/// <param name="list">List to add the item to.</param>
+			/// <param name="item">Item that will be added to the list.</param>
+			/// <param name="comparator">Action used to compare two items.</param>
+			public static void AddUniqueRange<T>(List<T> list, List<T> collection, Predicate<T> comparator)
+			{
+				for (int i = 0; i < collection.Count; i++)
+				{
+					AddUnique(list, collection[i], comparator);
+				}
 			}
 
 			#endregion
