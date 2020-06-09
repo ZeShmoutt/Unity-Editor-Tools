@@ -93,7 +93,7 @@ namespace ZeShmouttsAssets.ScriptingTools
 			/// </summary>
 			/// <typeparam name="T">Type of item of the array.</typeparam>
 			/// <param name="values">List of values to pick from.</param>
-			/// <param name="weights">List of weights to associate to each value. Both lists must have the same length.</param>
+			/// <param name="weights">List of weights to associate to each value. Both lists must have the same count.</param>
 			/// <returns>Returns a random element from the </returns>
 			public static T WeightedRandom<T>(List<T> values, List<int> weights)
 			{
@@ -101,7 +101,7 @@ namespace ZeShmouttsAssets.ScriptingTools
 			}
 
 			/// <summary>
-			/// Picks a random item from an array, using a list of weights to influence the random pick.\nAll weights will be added
+			/// Picks a random item from an array, using a list of weights to influence the random pick.
 			/// </summary>
 			/// <typeparam name="T">Type of item of the array.</typeparam>
 			/// <param name="values">Dictionary of weighted values to pick from.</param>
