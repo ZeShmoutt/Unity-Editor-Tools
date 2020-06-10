@@ -105,6 +105,23 @@ namespace ZeShmouttsAssets.ScriptingTools.Editor
 			}
 
 			#endregion
+
+			#region Enum field
+
+			/// <summary>
+			/// Shortcut for EditorGUILayout.EnumPopup with automatic cast to the desired type.
+			/// </summary>
+			/// <typeparam name="T">Type of enum.</typeparam>
+			/// <param name="label">Optional label in front of the field.</param>
+			/// <param name="selected">The enum option the field shows.</param>
+			/// <param name="options">An optional list of layout options that specify extra layout properties. Any values passed in here will override settings defined by the style.</param>
+			/// <returns></returns>
+			public static T EnumField<T>(string label, T selected, params GUILayoutOption[] options) where T : Enum
+			{
+				return (T)EditorGUILayout.EnumPopup(label, selected, options);
+			}
+
+			#endregion
 		}
 	}
 }
