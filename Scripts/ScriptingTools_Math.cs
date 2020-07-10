@@ -31,6 +31,39 @@ namespace ZeShmouttsAssets.ScriptingTools
 
 			#endregion
 
+			#region Rounding
+
+			/// <summary>
+			/// Returns f rounded to the nearest step multiple.
+			/// </summary>
+			/// <param name="f">Value to round.</param>
+			/// <param name="step">Step used to round the value.</param>
+			/// <returns>Returns a float.</returns>
+			public static float RoundToStep(float f, float step)
+			{
+				if (step == 0)
+				{
+					return f;
+				}
+				else
+				{
+					return Mathf.Round(f / step) * step;
+				}
+			}
+
+			/// <summary>
+			/// Returns f rounded to the nearest step multiple.
+			/// </summary>
+			/// <param name="f">Value to round.</param>
+			/// <param name="step">Step used to round the value.</param>
+			/// <returns></returns>
+			public static int RoundToStepInt(float f, int step)
+			{
+				return Mathf.RoundToInt(RoundToStep(f, (float)step));
+			}
+
+			#endregion
+
 			#region Average
 
 			/// <summary>
