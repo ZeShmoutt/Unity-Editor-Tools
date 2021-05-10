@@ -39,6 +39,48 @@ namespace ZeShmouttsAssets.ScriptingTools.Editor
 
 			#endregion
 
+			#region Layout
+
+			/// <summary>
+			/// Draws an horizontal line with the specified dimensions and color.
+			/// </summary>
+			/// <param name="thickness">The thickness of the line.</param>
+			/// <param name="padding">The vertical padding around the line.</param>
+			/// <param name="lineColor">The color of the line.</param>
+			public static void HorizontalLine(int thickness, int padding, Color lineColor)
+			{
+				Rect lineRect = EditorGUILayout.GetControlRect(GUILayout.Height(padding + thickness));
+				lineRect.height = thickness;
+				lineRect.y += padding / 2;
+				lineRect.x -= 2;
+				lineRect.width += 6;
+				EditorGUI.DrawRect(lineRect, lineColor);
+			}
+
+			/// <summary>
+			/// Draws an horizontal line with the specified dimensions.
+			/// </summary>
+			/// <param name="thickness">The thickness of the line.</param>
+			/// <param name="padding">The vertical padding around the line.</param>
+			/// <param name="lineColor">The color of the line.</param>
+			public static void HorizontalLine(int thickness, int padding)
+			{
+				HorizontalLine(thickness, padding, new Color(0.5f, 0.5f, 0.5f, 0.5f));
+			}
+
+			/// <summary>
+			/// Draws an horizontal line.
+			/// </summary>
+			/// <param name="thickness">The thickness of the line.</param>
+			/// <param name="padding">The vertical padding around the line.</param>
+			/// <param name="lineColor">The color of the line.</param>
+			public static void HorizontalLine()
+			{
+				HorizontalLine(1, 5);
+			}
+
+			#endregion
+
 			#region Layer Mask
 
 			/// <summary>
