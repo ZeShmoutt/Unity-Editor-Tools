@@ -1,0 +1,19 @@
+{
+    "name": "Unity Scripting Tools (Editor)",
+    "references": [
+        "GUID:0db2583f4c81aad4c918f663d06ae6bb"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "UNITY_2018_4_OR_NEWER"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
