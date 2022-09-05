@@ -131,6 +131,21 @@ namespace ZeShmouttsAssets.ScriptingTools
 
 			#endregion
 
+			#region Random
+
+			/// <summary>
+			/// Returns a random index for a list that can't be the current index.
+			/// </summary>
+			/// <param name="_currentIndex"></param>
+			/// <param name="_listCount"></param>
+			/// <returns></returns>
+			public static int RandomIndexExcludingCurrent(int _currentIndex, int _listCount)
+			{
+				return _currentIndex + Random.Range(1, _listCount - 1) % _listCount;
+			}
+
+			#endregion
+
 			#region In Range
 
 			/// <summary>
